@@ -19,7 +19,7 @@ class HelloConfiguration(
 
     @Bean
     fun helloJob(): Job {
-        return jobBuilderFactory.get("helloJob")
+        return jobBuilderFactory["helloJob"]
             .incrementer(RunIdIncrementer())
             .start(this.helloStep())
             .build()
@@ -28,8 +28,8 @@ class HelloConfiguration(
     @Bean
     fun helloStep(): Step {
         return stepBuilderFactory["helloStep"]
-            .tasklet { contribution: StepContribution, chunkContext: ChunkContext? ->
-                println("contribution = $contribution")
+            .tasklet { contribution, chunkContext ->
+                println("hello Spring batch")
                 RepeatStatus.FINISHED
             }
             .build()
