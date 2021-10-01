@@ -2,7 +2,8 @@ spring:
   batch:
     job:
       names: ${job.name:NONE}
-
+    jdbc:
+      initialize-schema: never
   jpa:
     show-sql: true
     database: mysql

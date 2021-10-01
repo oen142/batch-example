@@ -21,7 +21,7 @@ class HelloConfiguration(
     fun helloJob(): Job {
         return jobBuilderFactory["helloJob"]
             .incrementer(RunIdIncrementer())
-            .start(this.helloStep())
+            .start(helloStep())
             .build()
     }
 
